@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YD Innovation | Premium Event Planning & Event Technology Firm</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Playfair Display for Luxury + Plus Jakarta Sans for UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration for Theme Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            50: '#FAF6ED',
+                            100: '#F3EAD5',
+                            200: '#E6D4AA',
+                            300: '#D8BD7E',
+                            400: '#CBA653',
+                            500: '#B88E28', // Primary Champagne Gold
+                            600: '#96711D',
+                            700: '#735416',
+                            800: '#533B10',
+                            900: '#362409',
+                        },
+                        navy: {
+                            800: '#0F172A',
+                            900: '#0B1120',
+                            950: '#050811',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar & visual refinements */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1120;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B88E28;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D8BD7E;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3EAD5 0%, #D8BD7E 50%, #B88E28 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D8BD7E 0%, #B88E28 100%);
+        }
+        .gold-border-glow:hover {
+            box-shadow: 0 0 20px rgba(184, 142, 40, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-200 font-sans antialiased selection:bg-gold-500 selection:text-navy-950">
+
+    <!-- ========================================== -->
+    <!-- 1. HEADER & NAVIGATION                     -->
+    <!-- ========================================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navy-950/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full border-2 border-gold-400 flex items-center justify-center bg-navy-900 group-hover:border-gold-300 transition-colors">
+                        <span class="font-serif font-bold text-xl text-gold-400 group-hover:text-gold-300">YD</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold tracking-wider gold-gradient-text">YD INNOVATION</span>
+                        <span class="text-[10px] tracking-[0.2em] text-gold-200/60 uppercase -mt-1">Event Tech & Production</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#home" class="hover:text-gold-400 transition-colors py-1 border-b-2 border-transparent hover:border-gold-400">Home</a>
+                    <a href="#about" class="hover:text-gold-400 transition-colors py-1 border-b-2 border-transparent hover:border-gold-400">About</a>
+                    <a href="#services" class="hover:text-gold-400 transition-colors py-1 border-b-2 border-transparent hover:border-gold-400">Services</a>
+                    <a href="#calculator" class="hover:text-gold-400 transition-colors py-1 border-b-2 border-transparent hover:border-gold-400">Estimator</a>
+                    <a href="#gallery" class="hover:text-gold-400 transition-colors py-1 border-b-2 border-transparent hover:border-gold-400">Gallery</a>
+                    <a href="#reviews" class="hover:text-gold-400 transition-colors py-1 border-b-2 border-transparent hover:border-gold-400">Reviews</a>
+                    <a href="#contact" class="hover:text-gold-400 transition-colors py-1 border-b-2 border-transparent hover:border-gold-400">Contact</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center">
+                    <a href="#contact" onclick="prefillBooking('General Consultation')" class="gold-gradient-bg text-navy-950 font-semibold px-6 py-2.5 rounded-full hover:brightness-110 transition-all transform hover:-translate-y-0.5 shadow-lg shadow-gold-500/10">
+                        Book Consultation
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-gold-400 focus:outline-none p-2" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-900/95 border-b border-gold-500/20 backdrop-blur-lg px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded-md hover:bg-navy-800 text-gold-300 font-medium">Home</a>
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md hover:bg-navy-800 hover:text-gold-300">About</a>
+            <a href="#services" class="mobile-link block px-3 py-2 rounded-md hover:bg-navy-800 hover:text-gold-300">Services</a>
+            <a href="#calculator" class="mobile-link block px-3 py-2 rounded-md hover:bg-navy-800 hover:text-gold-300">Estimator</a>
+            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md hover:bg-navy-800 hover:text-gold-300">Gallery</a>
+            <a href="#reviews" class="mobile-link block px-3 py-2 rounded-md hover:bg-navy-800 hover:text-gold-300">Reviews</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded-md hover:bg-navy-800 hover:text-gold-300">Contact</a>
+            <a href="#contact" onclick="prefillBooking('Consultation')" class="mobile-link block text-center gold-gradient-bg text-navy-950 font-semibold py-2.5 rounded-full mt-4">
+                Book Consultation
+            </a>
+        </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- 2. HERO SECTION                            -->
+    <!-- ========================================== -->
+    <section id="home" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+        <!-- Background Overlay & Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1920&q=80" alt="Luxury Event & Tech Stage Setup" class="w-full h-full object-cover object-center opacity-30 transform scale-105 animate-pulse" style="animation-duration: 12s;">
+            <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-8 space-y-8">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-500/10 border border-gold-500/30 backdrop-blur-md">
+                        <i class="fa-solid fa-microchip text-gold-400 text-sm"></i>
+                        <span class="text-xs uppercase tracking-widest text-gold-300 font-semibold">Event Technology & Experience Architects</span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight text-white">
+                        Innovating Events with <span class="gold-gradient-text italic font-normal">Next-Gen</span> Technology & Luxury Design.
+                    </h1>
+
+                    <!-- Subheadline -->
+                    <p class="text-slate-300 text-lg sm:text-xl max-w-2xl font-light leading-relaxed">
+                        At <strong class="text-gold-300 font-semibold">YD Innovation</strong>, we combine high-end event planning with cutting-edge AV, dynamic stage production, projection mapping, and intelligent event management tools.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#services" class="gold-gradient-bg text-navy-950 font-bold px-8 py-4 rounded-full hover:brightness-110 transition-all flex items-center gap-3 shadow-xl shadow-gold-500/20 group">
+                            Explore Innovations
+                            <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="#calculator" class="bg-navy-900/80 hover:bg-navy-800 text-white font-semibold px-8 py-4 rounded-full border border-gold-500/30 hover:border-gold-400 transition-all backdrop-blur-md">
+                            Instant Cost Estimator
+                        </a>
+                    </div>
+
+                    <!-- Counter / Stats Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/10">
+                        <div>
+                            <div class="text-3xl font-serif font-bold text-gold-300"><span class="counter" data-target="650">650</span>+</div>
+                            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Events Produced</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-serif font-bold text-gold-300"><span class="counter" data-target="150">150</span>+</div>
+                            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Tech Partners</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-serif font-bold text-gold-300"><span class="counter" data-target="99">99</span>%</div>
+                            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Client Satisfaction</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-serif font-bold text-gold-300"><span class="counter" data-target="14">14</span>+</div>
+                            <div class="text-xs text-slate-400 mt-1 uppercase tracking-wider">Years Innovation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Interactive Card / Hero Accent -->
+                <div class="lg:col-span-4 hidden lg:block">
+                    <div class="relative">
+                        <div class="absolute -inset-1 gold-gradient-bg rounded-2xl blur-lg opacity-30"></div>
+                        <div class="relative bg-navy-900 border border-gold-500/30 p-6 rounded-2xl shadow-2xl space-y-6">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full gold-gradient-bg flex items-center justify-center text-navy-950 font-bold text-xl">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-serif font-semibold">YD Smart Events</h3>
+                                    <p class="text-xs text-gold-300">Seamless Planning & Tech Integration</p>
+                                </div>
+                            </div>
+
+                            <p class="text-sm text-slate-300 italic">
+                                "YD Innovation transformed our tech summit with holographic displays and live interactive audience tools. Truly unforgettable!"
+                            </p>
+
+                            <div class="flex items-center justify-between text-xs text-slate-400 border-t border-white/10 pt-4">
+                                <span>Marcus Vance, CTO</span>
+                                <div class="text-gold-400">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. ABOUT US SECTION                        -->
+    <!-- ========================================== -->
+    <section id="about" class="py-24 bg-navy-900/50 relative border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column - Image Stack -->
+                <div class="lg:col-span-6 relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden border border-gold-500/30 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="YD Innovation Event Production Team" class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="absolute -bottom-8 -right-6 z-20 hidden sm:block w-2/3 rounded-2xl overflow-hidden border-2 border-gold-400 shadow-2xl bg-navy-950 p-2">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=600&q=80" alt="Stage Lighting Setup" class="w-full h-48 object-cover rounded-xl">
+                    </div>
+                    <!-- Badge Overlay -->
+                    <div class="absolute -top-6 -left-6 z-20 gold-gradient-bg text-navy-950 p-4 rounded-xl font-serif font-bold text-center shadow-xl">
+                        <span class="block text-3xl">14+</span>
+                        <span class="text-xs uppercase tracking-wider font-sans font-semibold">Years Innovation</span>
+                    </div>
+                </div>
+
+                <!-- Right Column - Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-gold-400 text-sm font-semibold tracking-widest uppercase">About YD Innovation</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Merging Creative Design with Smart Event Technology</h2>
+                    </div>
+
+                    <p class="text-slate-300 leading-relaxed font-light">
+                        <strong class="text-gold-300 font-semibold">YD Innovation</strong> is a premier event planning and event technology firm. We bridge the gap between aesthetic luxury design and high-tech event solutions, ensuring every gathering leaves a lasting digital and physical footprint.
+                    </p>
+
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        From AI-driven guest check-in systems and projection mapping to luxury wedding orchestration, our team delivers flawlessly engineered events around the globe.
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-navy-800/60 border border-white/5 flex items-start gap-3">
+                            <i class="fa-solid fa-lightbulb text-gold-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Smart Event Tech</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Custom apps & interactive check-ins</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-navy-800/60 border border-white/5 flex items-start gap-3">
+                            <i class="fa-solid fa-handshake text-gold-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Premier Vendors</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Top-tier caterers, artists & venues</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-navy-800/60 border border-white/5 flex items-start gap-3">
+                            <i class="fa-solid fa-sliders text-gold-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">3D Stage Design</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Real-time venue visualization</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-navy-800/60 border border-white/5 flex items-start gap-3">
+                            <i class="fa-solid fa-shield-halved text-gold-400 text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-white text-sm">Zero Latency Exec</h4>
+                                <p class="text-xs text-slate-400 mt-0.5">Flawless AV & live streaming</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. SERVICES SHOWCASE                      -->
+    <!-- ========================================== -->
+    <section id="services" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-gold-400 text-sm font-semibold tracking-widest uppercase">Our Core Solutions</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Event Tech & Management Solutions</h2>
+                <p class="text-slate-400 font-light">Combining event technology innovation with full-spectrum luxury event coordination.</p>
+            </div>
+
+            <!-- Service Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="service-tab-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 bg-gold-500 text-navy-950 transition-all" data-category="all">All Solutions</button>
+                <button class="service-tab-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 bg-navy-900 text-slate-300 hover:text-gold-300 transition-all" data-category="tech">Event Technology</button>
+                <button class="service-tab-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 bg-navy-900 text-slate-300 hover:text-gold-300 transition-all" data-category="wedding">Weddings</button>
+                <button class="service-tab-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 bg-navy-900 text-slate-300 hover:text-gold-300 transition-all" data-category="corporate">Corporate</button>
+                <button class="service-tab-btn px-6 py-2.5 rounded-full text-sm font-medium border border-gold-500/30 bg-navy-900 text-slate-300 hover:text-gold-300 transition-all" data-category="production">AV & Lighting</button>
+            </div>
+
+            <!-- Service Cards Grid -->
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="service-card group bg-navy-900/60 rounded-2xl border border-white/10 overflow-hidden hover:border-gold-500/50 transition-all duration-300 gold-border-glow" data-category="tech">
+                    <div class="h-52 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" alt="Smart Event Apps & Check-in" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-navy-950/80 backdrop-blur-md border border-gold-500/30 text-gold-300 text-xs px-3 py-1 rounded-full"><i class="fa-solid fa-qrcode mr-1"></i> Tech</span>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="font-serif text-2xl font-bold text-white group-hover:text-gold-300 transition-colors">Smart Check-in & Event Apps</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Custom mobile event apps, facial recognition / QR check-in badges, interactive audience polling, and live RFID tracking.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-white/10 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Custom iOS & Android Event Apps</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Instant QR Badge Printing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Live Analytics Dashboard</li>
+                        </ul>
+                        <button onclick="openServiceModal('Smart Check-in & Event Apps', 'Revolutionize attendee management with YD Innovation tech suites. Eliminate long registration lines and provide attendees with interactive schedules, live Q&A, and networking portals.', ['Instant Badge Printers', 'NFC / RFID Access Badges', 'Real-time Attendance Metrics', 'Custom Branded App Features'])" class="w-full py-2.5 rounded-xl border border-gold-500/30 text-gold-300 hover:bg-gold-500 hover:text-navy-950 font-semibold text-sm transition-all mt-2">
+                            Learn More / Inquire
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card group bg-navy-900/60 rounded-2xl border border-white/10 overflow-hidden hover:border-gold-500/50 transition-all duration-300 gold-border-glow" data-category="wedding">
+                    <div class="h-52 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Weddings & Anniversaries" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-navy-950/80 backdrop-blur-md border border-gold-500/30 text-gold-300 text-xs px-3 py-1 rounded-full"><i class="fa-solid fa-heart mr-1"></i> Weddings</span>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="font-serif text-2xl font-bold text-white group-hover:text-gold-300 transition-colors">Luxury Weddings & Galas</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Full wedding curation paired with ambient intelligent lighting, floral architecture, and seamless guest hospitality.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-white/10 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> 3D Virtual Stage Preview</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Custom Ambient Lighting</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Full Day-Of Logistics</li>
+                        </ul>
+                        <button onclick="openServiceModal('Luxury Weddings & Galas', 'We craft romantic, breathtaking weddings tailored to your love story. Our team handles vendor negotiation, luxury decor, 3D venue layout planning, and timeline management.', ['Venue Sourcing', 'Custom Floral Architecture', 'Interactive LED Backdrops', 'Guest Transportation & Concierge'])" class="w-full py-2.5 rounded-xl border border-gold-500/30 text-gold-300 hover:bg-gold-500 hover:text-navy-950 font-semibold text-sm transition-all mt-2">
+                            Learn More / Inquire
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card group bg-navy-900/60 rounded-2xl border border-white/10 overflow-hidden hover:border-gold-500/50 transition-all duration-300 gold-border-glow" data-category="corporate">
+                    <div class="h-52 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Corporate Conferences" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-navy-950/80 backdrop-blur-md border border-gold-500/30 text-gold-300 text-xs px-3 py-1 rounded-full"><i class="fa-solid fa-briefcase mr-1"></i> Corporate</span>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="font-serif text-2xl font-bold text-white group-hover:text-gold-300 transition-colors">Corporate Summits & Launches</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">High-impact summits, product launches, multi-stage audio setups, and global live stream broadcasting.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-white/10 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Ultra-HD LED Wall Rigging</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Hybrid Stream & Teleprompters</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Executive Lounge Management</li>
+                        </ul>
+                        <button onclick="openServiceModal('Corporate Summits & Launches', 'Elevate your enterprise brand presence with YD Innovation. From cutting-edge AV setups to hybrid streaming rigs, branded interactive walls, and VIP protocol.', ['Stage & Lighting Rigging', 'Multi-camera Live Streaming', 'VIP Protocol & Security', 'Branded Lounge & Booths'])" class="w-full py-2.5 rounded-xl border border-gold-500/30 text-gold-300 hover:bg-gold-500 hover:text-navy-950 font-semibold text-sm transition-all mt-2">
+                            Learn More / Inquire
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card group bg-navy-900/60 rounded-2xl border border-white/10 overflow-hidden hover:border-gold-500/50 transition-all duration-300 gold-border-glow" data-category="production">
+                    <div class="h-52 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Projection Mapping & AV" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-navy-950/80 backdrop-blur-md border border-gold-500/30 text-gold-300 text-xs px-3 py-1 rounded-full"><i class="fa-solid fa-sliders mr-1"></i> AV & Production</span>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="font-serif text-2xl font-bold text-white group-hover:text-gold-300 transition-colors">3D Projection & Lighting Rigging</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Immersive 3D architectural projection mapping, lasers, moving lights, and acoustic audio engineering.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-white/10 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Architectural Building Mapping</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Synchronized Intelligent Lights</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Concert-Grade Line Arrays</li>
+                        </ul>
+                        <button onclick="openServiceModal('3D Projection & Lighting Rigging', 'Transform static venues into dynamic visual canvases. Our projection mapping technology projects custom animations onto building facades, stages, and banquet halls.', ['4K High-Lumen Projectors', 'Computer-Controlled Intelligent Lights', 'Spatial Audio Systems', 'Custom 3D Visual Content'])" class="w-full py-2.5 rounded-xl border border-gold-500/30 text-gold-300 hover:bg-gold-500 hover:text-navy-950 font-semibold text-sm transition-all mt-2">
+                            Learn More / Inquire
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card group bg-navy-900/60 rounded-2xl border border-white/10 overflow-hidden hover:border-gold-500/50 transition-all duration-300 gold-border-glow" data-category="tech">
+                    <div class="h-52 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80" alt="Interactive Photo Booths" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-navy-950/80 backdrop-blur-md border border-gold-500/30 text-gold-300 text-xs px-3 py-1 rounded-full"><i class="fa-solid fa-camera mr-1"></i> Interactive</span>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="font-serif text-2xl font-bold text-white group-hover:text-gold-300 transition-colors">360 Video Booths & AR Experiences</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">Engage guests with 360-degree slow-motion cameras, augmented reality photo booths, and instant AI photo sharing.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 border-t border-white/10 pt-4">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> 360 Spinner Platforms</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Instant QR & SMS Video Sharing</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gold-400"></i> Custom AR Brand Overlays</li>
+                        </ul>
+                        <button onclick="openServiceModal('360 Video Booths & AR Experiences', 'Make your event go viral on social media. We provide interactive 360 booths, custom AR filters, and instant social media integration.', ['360 Video Platforms', 'Instant SMS/AirDrop Sharing', 'Custom Event Overlays', 'Studio Lighting Setup'])" class="w-full py-2.5 rounded-xl border border-gold-500/30 text-gold-300 hover:bg-gold-500 hover:text-navy-950 font-semibold text-sm transition-all mt-2">
+                            Learn More / Inquire
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Detail Modal -->
+    <div id="service-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-md">
+        <div class="bg-navy-900 border border-gold-500/40 rounded-2xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl space-y-6">
+            <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-slate-400 hover:text-gold-400 text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="modal-title" class="font-serif text-2xl font-bold text-white">Service Title</h3>
+            <p id="modal-desc" class="text-slate-300 text-sm leading-relaxed"></p>
+            <div>
+                <h4 class="text-xs font-semibold text-gold-300 uppercase tracking-wider mb-2">Key Highlights</h4>
+                <ul id="modal-list" class="text-xs text-slate-300 space-y-1.5 list-disc list-inside"></ul>
+            </div>
+            <div class="pt-4 border-t border-white/10 flex gap-3">
+                <button onclick="closeServiceModal()" class="w-1/2 py-2.5 rounded-xl border border-white/10 text-slate-300 hover:bg-navy-800 text-sm">Close</button>
+                <button id="modal-book-btn" class="w-1/2 py-2.5 rounded-xl gold-gradient-bg text-navy-950 font-bold text-sm hover:brightness-110">Book Solution</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 5. INTERACTIVE BUDGET COST ESTIMATOR       -->
+    <!-- ========================================== -->
+    <section id="calculator" class="py-24 bg-navy-900/80 relative border-t border-b border-white/10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-gold-400 text-sm font-semibold tracking-widest uppercase">Instant Planning Tool</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">YD Innovation Cost Estimator</h2>
+                <p class="text-slate-400 text-sm">Select options below to estimate your event tech, production, and planning budget range in real-time.</p>
+            </div>
+
+            <div class="bg-navy-950 border border-gold-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Controls Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- 1. Event Type -->
+                    <div>
+                        <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">1. Select Event Category</label>
+                        <select id="calc-event-type" class="w-full bg-navy-900 border border-white/15 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-gold-400 text-sm">
+                            <option value="corporate">Corporate Summit & Tech Launch</option>
+                            <option value="wedding">Luxury Wedding & Gala</option>
+                            <option value="party">Private Milestone Party</option>
+                            <option value="concert">Concert / Cultural Festival</option>
+                        </select>
+                    </div>
+
+                    <!-- 2. Guest Count Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-xs uppercase text-gold-300 font-semibold">2. Guest / Attendee Count</label>
+                            <span id="calc-guest-val" class="text-gold-400 font-bold text-lg">200 Guests</span>
+                        </div>
+                        <input id="calc-guest-slider" type="range" min="20" max="1000" step="10" value="200" class="w-full h-2 bg-navy-800 rounded-lg appearance-none cursor-pointer accent-gold-400">
+                    </div>
+
+                    <!-- 3. Service Level Tier -->
+                    <div>
+                        <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">3. Package & Tech Level</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button class="tier-btn p-3 rounded-xl border border-white/10 text-center hover:border-gold-400 transition-all text-xs font-semibold" data-tier="silver">
+                                <span class="block text-slate-300 font-serif text-sm">Standard</span>
+                                <span class="text-[10px] text-slate-400">Essential Tech</span>
+                            </button>
+                            <button class="tier-btn active p-3 rounded-xl border border-gold-400 bg-gold-500/20 text-center transition-all text-xs font-semibold" data-tier="gold">
+                                <span class="block text-gold-300 font-serif text-sm">Smart Event</span>
+                                <span class="text-[10px] text-gold-200">Full App & AV</span>
+                            </button>
+                            <button class="tier-btn p-3 rounded-xl border border-white/10 text-center hover:border-gold-400 transition-all text-xs font-semibold" data-tier="platinum">
+                                <span class="block text-slate-300 font-serif text-sm">Innovation</span>
+                                <span class="text-[10px] text-slate-400">Projection & Hologram</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 4. Add-ons -->
+                    <div>
+                        <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">4. Event Technology Add-ons</label>
+                        <div class="grid grid-cols-2 gap-3 text-xs">
+                            <label class="flex items-center gap-2 p-2.5 rounded-lg bg-navy-900 border border-white/5 cursor-pointer hover:border-gold-500/30">
+                                <input type="checkbox" class="addon-checkbox accent-gold-400" value="1500" checked>
+                                <span>QR Badge Check-in</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 rounded-lg bg-navy-900 border border-white/5 cursor-pointer hover:border-gold-500/30">
+                                <input type="checkbox" class="addon-checkbox accent-gold-400" value="1200" checked>
+                                <span>360 Video Booth</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 rounded-lg bg-navy-900 border border-white/5 cursor-pointer hover:border-gold-500/30">
+                                <input type="checkbox" class="addon-checkbox accent-gold-400" value="2500">
+                                <span>3D Projection Mapping</span>
+                            </label>
+                            <label class="flex items-center gap-2 p-2.5 rounded-lg bg-navy-900 border border-white/5 cursor-pointer hover:border-gold-500/30">
+                                <input type="checkbox" class="addon-checkbox accent-gold-400" value="1800" checked>
+                                <span>Live Multi-Cam Stream</span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Price Summary Box -->
+                <div class="lg:col-span-5 bg-navy-900/90 rounded-2xl border border-gold-500/30 p-6 flex flex-col justify-between text-center relative overflow-hidden">
+                    <div class="space-y-4">
+                        <span class="text-xs uppercase tracking-widest text-gold-300 font-semibold">Estimated Budget</span>
+                        
+                        <div class="py-4 border-y border-white/10">
+                            <span class="text-xs text-slate-400 block mb-1">Estimated Range</span>
+                            <div id="calc-total-display" class="font-serif text-3xl sm:text-4xl font-bold gold-gradient-text">$6,500 - $8,200</div>
+                        </div>
+
+                        <ul class="text-left text-xs text-slate-300 space-y-2">
+                            <li class="flex justify-between">
+                                <span class="text-slate-400">Base Production & Planning:</span>
+                                <span id="summary-base" class="font-medium">$3,000</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span class="text-slate-400">Attendee Logistics Factor:</span>
+                                <span id="summary-guest" class="font-medium">$2,000</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span class="text-slate-400">Selected Event Tech:</span>
+                                <span id="summary-addons" class="font-medium">$2,700</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-6 space-y-3">
+                        <button onclick="bookEstimatedPackage()" class="w-full py-3 rounded-xl gold-gradient-bg text-navy-950 font-bold text-sm hover:brightness-110 shadow-lg shadow-gold-500/10">
+                            Book This Package
+                        </button>
+                        <p class="text-[10px] text-slate-500">*Final estimates subject to venue site inspection & tech requirements.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 6. GALLERY / PORTFOLIO                     -->
+    <!-- ========================================== -->
+    <section id="gallery" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-gold-400 text-sm font-semibold tracking-widest uppercase">Our Portfolio</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Innovation Showcase</h2>
+                <p class="text-slate-400 text-sm">Explore images from recent high-tech events, luxury galas, and stage productions engineered by YD Innovation.</p>
+            </div>
+
+            <!-- Gallery Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10">
+                <button class="gallery-btn px-5 py-2 rounded-full text-xs font-semibold border border-gold-500/30 bg-gold-500 text-navy-950" data-filter="all">All</button>
+                <button class="gallery-btn px-5 py-2 rounded-full text-xs font-semibold border border-gold-500/30 bg-navy-900 text-slate-300 hover:text-gold-300" data-filter="tech">Tech & AV</button>
+                <button class="gallery-btn px-5 py-2 rounded-full text-xs font-semibold border border-gold-500/30 bg-navy-900 text-slate-300 hover:text-gold-300" data-filter="wedding">Weddings</button>
+                <button class="gallery-btn px-5 py-2 rounded-full text-xs font-semibold border border-gold-500/30 bg-navy-900 text-slate-300 hover:text-gold-300" data-filter="corporate">Corporate</button>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item group relative h-72 rounded-2xl overflow-hidden border border-white/10 cursor-pointer" data-category="tech" onclick="openLightbox('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=80', 'YD Innovation LED Stage Mapping')">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=80" alt="Tech Summit Stage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-gold-300 text-xs font-semibold uppercase tracking-wider">Tech & AV</span>
+                        <h4 class="text-white font-serif font-bold text-lg">Interactive LED Stage Mapping</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item group relative h-72 rounded-2xl overflow-hidden border border-white/10 cursor-pointer" data-category="wedding" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80', 'Royal Crystal Wedding')">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Royal Wedding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-gold-300 text-xs font-semibold uppercase tracking-wider">Weddings</span>
+                        <h4 class="text-white font-serif font-bold text-lg">Royal Crystal Palace Gala</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item group relative h-72 rounded-2xl overflow-hidden border border-white/10 cursor-pointer" data-category="corporate" onclick="openLightbox('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1200&q=80', 'Global AI Summit Keynote')">
+                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=80" alt="Corporate Summit" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-gold-300 text-xs font-semibold uppercase tracking-wider">Corporate</span>
+                        <h4 class="text-white font-serif font-bold text-lg">Global AI Summit Keynote</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item group relative h-72 rounded-2xl overflow-hidden border border-white/10 cursor-pointer" data-category="tech" onclick="openLightbox('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80', '3D Architectural Projection Mapping')">
+                    <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80" alt="Laser Show" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-gold-300 text-xs font-semibold uppercase tracking-wider">Tech & AV</span>
+                        <h4 class="text-white font-serif font-bold text-lg">3D Building Projection Mapping</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item group relative h-72 rounded-2xl overflow-hidden border border-white/10 cursor-pointer" data-category="wedding" onclick="openLightbox('https://images.unsplash.com/photo-1545232979-fbf34fe370ef?auto=format&fit=crop&w=1200&q=80', 'Outdoor Sunset Vows & Smart Lighting')">
+                    <img src="https://images.unsplash.com/photo-1545232979-fbf34fe370ef?auto=format&fit=crop&w=800&q=80" alt="Beach Wedding" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-gold-300 text-xs font-semibold uppercase tracking-wider">Weddings</span>
+                        <h4 class="text-white font-serif font-bold text-lg">Sunset Vows & Smart Lighting</h4>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item group relative h-72 rounded-2xl overflow-hidden border border-white/10 cursor-pointer" data-category="corporate" onclick="openLightbox('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80', 'Corporate VIP Gala Dinner')">
+                    <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="VIP Gala" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
+                        <span class="text-gold-300 text-xs font-semibold uppercase tracking-wider">Corporate</span>
+                        <h4 class="text-white font-serif font-bold text-lg">Corporate VIP Gala Soirée</h4>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-navy-950/95 flex items-center justify-center p-4 backdrop-blur-md">
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-gold-400 z-50"><i class="fa-solid fa-xmark"></i></button>
+        <div class="max-w-4xl w-full text-center space-y-4">
+            <img id="lightbox-img" src="" alt="Enlarged view" class="max-h-[80vh] mx-auto rounded-xl border border-gold-500/30 shadow-2xl">
+            <h4 id="lightbox-caption" class="font-serif text-xl font-bold text-gold-300"></h4>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 7. TESTIMONIALS & REVIEWS                  -->
+    <!-- ========================================== -->
+    <section id="reviews" class="py-24 bg-navy-900/40 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                <span class="text-gold-400 text-sm font-semibold tracking-widest uppercase">Client Testimonials</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Trusted by Industry Leaders</h2>
+                <p class="text-slate-400 text-sm">Read how YD Innovation bridges technology and luxury planning for unmissable experiences.</p>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-navy-950 p-8 rounded-2xl border border-white/10 relative space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-gold-400 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "YD Innovation provided an integrated event app and 3D stage setup for our global conference. The check-in speed and audio clarity were world-class."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Client Avatar" class="w-12 h-12 rounded-full object-cover border border-gold-400">
+                        <div>
+                            <h4 class="font-serif font-bold text-white text-sm">David Sterling</h4>
+                            <span class="text-xs text-gold-300">VP, TechGlobal Corp</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-navy-950 p-8 rounded-2xl border border-white/10 relative space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-gold-400 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "Our wedding felt like an enchanted fairytale thanks to YD Innovation's ambient lighting engineering and flawless vendor coordination. Simply amazing!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Client Avatar" class="w-12 h-12 rounded-full object-cover border border-gold-400">
+                        <div>
+                            <h4 class="font-serif font-bold text-white text-sm">Elena Rostova</h4>
+                            <span class="text-xs text-gold-300">Wedding Host</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-navy-950 p-8 rounded-2xl border border-white/10 relative space-y-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="text-gold-400 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">
+                            "The 360 photo booth and projection mapping delivered by YD Innovation made our corporate gala the hit of the season. Highest recommendation!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-white/10">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80" alt="Client Avatar" class="w-12 h-12 rounded-full object-cover border border-gold-400">
+                        <div>
+                            <h4 class="font-serif font-bold text-white text-sm">Samantha Vance</h4>
+                            <span class="text-xs text-gold-300">Gala Director</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 8. CONTACT & BOOKING FORM                  -->
+    <!-- ========================================== -->
+    <section id="contact" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Info Column -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-3">
+                        <span class="text-gold-400 text-sm font-semibold tracking-widest uppercase">Get In Touch</span>
+                        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">Let’s Engineer Your Next Event</h2>
+                        <p class="text-slate-400 text-sm leading-relaxed">Ready to elevate your event with cutting-edge technology and luxury planning? Contact YD Innovation today.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-semibold">Innovation Center</h4>
+                                <p class="text-slate-400 text-xs">850 Innovation Way, Suite 500, New York, NY 10001</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-semibold">Phone Inquiries</h4>
+                                <p class="text-slate-400 text-xs">+1 (800) 555-YD-INNOVATION / +1 (555) 019-3829</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400 shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-semibold">Email Concierge</h4>
+                                <p class="text-slate-400 text-xs">events@ydinnovation.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-navy-900/60 border border-gold-500/20">
+                        <h4 class="font-serif text-white font-semibold text-sm mb-1">Operating Hours</h4>
+                        <p class="text-xs text-slate-400">Monday – Saturday: 9:00 AM – 7:00 PM EST</p>
+                        <p class="text-xs text-slate-400">Sunday: By Appointment Only</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Booking Form Column -->
+                <div class="lg:col-span-7 bg-navy-900 border border-gold-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl">
+                    <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">Full Name *</label>
+                                <input type="text" id="form-name" required placeholder="John Doe" class="w-full bg-navy-950 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">Email Address *</label>
+                                <input type="email" id="form-email" required placeholder="john@example.com" class="w-full bg-navy-950 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">Phone Number *</label>
+                                <input type="tel" id="form-phone" required placeholder="+1 (555) 000-0000" class="w-full bg-navy-950 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">Target Event Date *</label>
+                                <input type="date" id="form-date" required class="w-full bg-navy-950 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">Service Required *</label>
+                                <select id="form-event-type" class="w-full bg-navy-950 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                                    <option value="Smart Event Tech & Apps">Smart Event Tech & Apps</option>
+                                    <option value="Luxury Wedding & Gala">Luxury Wedding & Gala</option>
+                                    <option value="Corporate Summit / Launch">Corporate Summit / Launch</option>
+                                    <option value="3D Projection & Lighting">3D Projection & Lighting</option>
+                                    <option value="General Consultation">General Consultation</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">Estimated Attendees</label>
+                                <input type="number" id="form-guests" placeholder="e.g. 200" class="w-full bg-navy-950 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-gold-400">
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs uppercase text-gold-300 font-semibold">Budget Range</label>
+                                <span id="form-budget-val" class="text-xs text-gold-400 font-bold">$15,000 - $30,000</span>
+                            </div>
+                            <input id="form-budget-slider" type="range" min="3000" max="100000" step="1000" value="25000" class="w-full h-2 bg-navy-950 rounded-lg appearance-none cursor-pointer accent-gold-400">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs uppercase text-gold-300 font-semibold mb-2">Project Scope & Tech Requirements</label>
+                            <textarea id="form-message" rows="4" placeholder="Share venue specifics, AV needs, app features, or styling ideas..." class="w-full bg-navy-950 border border-white/10 rounded-xl p-4 text-white text-sm focus:outline-none focus:border-gold-400"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl gold-gradient-bg text-navy-950 font-bold text-sm tracking-wider uppercase hover:brightness-110 shadow-xl shadow-gold-500/20 transition-all">
+                            Submit Consultation Request
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Toast Modal -->
+    <div id="toast-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-md">
+        <div class="bg-navy-900 border border-gold-400/50 rounded-2xl max-w-md w-full p-8 text-center space-y-4 shadow-2xl">
+            <div class="w-16 h-16 rounded-full gold-gradient-bg flex items-center justify-center text-navy-950 text-2xl mx-auto">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-white">Consultation Requested!</h3>
+            <p class="text-slate-300 text-sm">Thank you for reaching out to YD Innovation. Our team has received your project details and will contact you within 24 hours.</p>
+            <button onclick="closeToastModal()" class="w-full py-3 rounded-xl bg-gold-500 text-navy-950 font-bold text-sm hover:brightness-110">Close</button>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- 9. FAQ SECTION                             -->
+    <!-- ========================================== -->
+    <section class="py-24 bg-navy-900/50 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <span class="text-gold-400 text-sm font-semibold tracking-widest uppercase">Got Questions?</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Frequently Asked Questions</h2>
+            </div>
+
+            <!-- Accordion Layout -->
+            <div class="space-y-4">
+                
+                <div class="faq-item border border-white/10 rounded-2xl bg-navy-950 overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-serif font-semibold text-white flex justify-between items-center hover:text-gold-300 transition-colors">
+                        <span>How far in advance should we book YD Innovation?</span>
+                        <i class="fa-solid fa-chevron-down text-gold-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        For complex event technology, live broadcasting, and full corporate summits or weddings, we recommend booking 3 to 6 months in advance. Smaller tech setups or single-service rentals can often be scheduled within 2 to 4 weeks.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-white/10 rounded-2xl bg-navy-950 overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-serif font-semibold text-white flex justify-between items-center hover:text-gold-300 transition-colors">
+                        <span>Can YD Innovation provide custom event apps for attendees?</span>
+                        <i class="fa-solid fa-chevron-down text-gold-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Yes! We develop white-labeled iOS and Android apps customized to your event branding. Features include digital badges, live Q&A, interactive maps, speaker schedules, and automated push notifications.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-white/10 rounded-2xl bg-navy-950 overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-serif font-semibold text-white flex justify-between items-center hover:text-gold-300 transition-colors">
+                        <span>What technical setup is required for 3D Projection Mapping?</span>
+                        <i class="fa-solid fa-chevron-down text-gold-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Our engineering team conducts a 3D laser scan of your venue or facade to build a digital map. We then supply the high-lumen laser projectors and media servers required for seamless visual warping.
+                    </div>
+                </div>
+
+                <div class="faq-item border border-white/10 rounded-2xl bg-navy-950 overflow-hidden">
+                    <button class="faq-btn w-full p-6 text-left font-serif font-semibold text-white flex justify-between items-center hover:text-gold-300 transition-colors">
+                        <span>Do you handle hybrid events with online and in-person audiences?</span>
+                        <i class="fa-solid fa-chevron-down text-gold-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Absolutely. We specialize in hybrid setups using low-latency multi-camera streams, live chat moderation, and remote speaker integrations broadcast directly to global audiences.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 10. FOOTER                                 -->
+    <!-- ========================================== -->
+    <footer class="bg-navy-950 border-t border-gold-500/20 pt-16 pb-12 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#home" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-gold-400 flex items-center justify-center bg-navy-900">
+                            <span class="font-serif font-bold text-xl text-gold-400">YD</span>
+                        </div>
+                        <span class="font-serif text-2xl font-bold gold-gradient-text">YD INNOVATION</span>
+                    </a>
+                    <p class="text-xs leading-relaxed max-w-sm text-slate-400">
+                        Pioneering event planning and intelligent event technology. Fusing aesthetic luxury with zero-latency production.
+                    </p>
+                    <div class="flex space-x-4 text-slate-300 pt-2">
+                        <a href="#" class="w-9 h-9 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center hover:border-gold-400 hover:text-gold-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center hover:border-gold-400 hover:text-gold-400 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center hover:border-gold-400 hover:text-gold-400 transition-colors"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center hover:border-gold-400 hover:text-gold-400 transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Quick Links -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-serif font-semibold text-base">Quick Links</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-gold-300 transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-gold-300 transition-colors">About YD Innovation</a></li>
+                        <li><a href="#services" class="hover:text-gold-300 transition-colors">Solutions</a></li>
+                        <li><a href="#calculator" class="hover:text-gold-300 transition-colors">Cost Estimator</a></li>
+                        <li><a href="#gallery" class="hover:text-gold-300 transition-colors">Portfolio</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Services -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-serif font-semibold text-base">Solutions</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#services" class="hover:text-gold-300 transition-colors">Smart Event Apps</a></li>
+                        <li><a href="#services" class="hover:text-gold-300 transition-colors">3D Projection Mapping</a></li>
+                        <li><a href="#services" class="hover:text-gold-300 transition-colors">Luxury Weddings</a></li>
+                        <li><a href="#services" class="hover:text-gold-300 transition-colors">Corporate Summits</a></li>
+                        <li><a href="#services" class="hover:text-gold-300 transition-colors">360 Video Booths</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Newsletter -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-serif font-semibold text-base">Stay Ahead</h4>
+                    <p class="text-xs text-slate-400">Subscribe for event tech insights & luxury event trends.</p>
+                    <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <input type="email" required placeholder="Enter your email" class="w-full bg-navy-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-400">
+                        <button type="submit" class="w-full py-2 rounded-xl gold-gradient-bg text-navy-950 font-bold text-xs uppercase tracking-wider">Subscribe</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+                <p>&copy; 2026 YD Innovation. All Rights Reserved. Event Technology & Experience Design.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-slate-400">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT INTERACTIVE LOGIC               -->
+    <!-- ========================================== -->
+    <script>
+        // --- 1. Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- 2. Stats Animated Counter ---
+        const counters = document.querySelectorAll('.counter');
+        let animated = false;
+
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + window.innerHeight;
+            const heroSection = document.getElementById('home');
+            
+            if (heroSection && scrollPos > heroSection.offsetTop + 200 && !animated) {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let count = 0;
+                    const speed = target / 50;
+
+                    const updateCount = () => {
+                        count += speed;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count);
+                            setTimeout(updateCount, 30);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+                animated = true;
+            }
+        });
+
+        // --- 3. Services Filtering & Modal ---
+        const serviceTabBtns = document.querySelectorAll('.service-tab-btn');
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        serviceTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                serviceTabBtns.forEach(b => {
+                    b.classList.remove('bg-gold-500', 'text-navy-950');
+                    b.classList.add('bg-navy-900', 'text-slate-300');
+                });
+                btn.classList.remove('bg-navy-900', 'text-slate-300');
+                btn.classList.add('bg-gold-500', 'text-navy-950');
+
+                const category = btn.getAttribute('data-category');
+
+                serviceCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Service Modal Handler
+        const serviceModal = document.getElementById('service-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalList = document.getElementById('modal-list');
+        const modalBookBtn = document.getElementById('modal-book-btn');
+
+        function openServiceModal(title, description, highlights) {
+            modalTitle.innerText = title;
+            modalDesc.innerText = description;
+            modalList.innerHTML = '';
+            highlights.forEach(item => {
+                const li = document.createElement('li');
+                li.innerText = item;
+                modalList.appendChild(li);
+            });
+            modalBookBtn.onclick = () => {
+                closeServiceModal();
+                prefillBooking(title);
+            };
+            serviceModal.classList.remove('hidden');
+        }
+
+        function closeServiceModal() {
+            serviceModal.classList.add('hidden');
+        }
+
+        // --- 4. Dynamic Budget / Cost Estimator ---
+        const calcEventType = document.getElementById('calc-event-type');
+        const calcGuestSlider = document.getElementById('calc-guest-slider');
+        const calcGuestVal = document.getElementById('calc-guest-val');
+        const tierBtns = document.querySelectorAll('.tier-btn');
+        const addonCheckboxes = document.querySelectorAll('.addon-checkbox');
+
+        const displayTotal = document.getElementById('calc-total-display');
+        const summaryBase = document.getElementById('summary-base');
+        const summaryGuest = document.getElementById('summary-guest');
+        const summaryAddons = document.getElementById('summary-addons');
+
+        let selectedTier = 'gold';
+
+        // Base prices by event type
+        const basePrices = {
+            corporate: 3500,
+            wedding: 3800,
+            party: 1800,
+            concert: 5500
+        };
+
+        // Tier multipliers
+        const tierMultipliers = {
+            silver: 0.85,
+            gold: 1.0,
+            platinum: 1.6
+        };
+
+        tierBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tierBtns.forEach(b => {
+                    b.classList.remove('active', 'border-gold-400', 'bg-gold-500/20');
+                    b.classList.add('border-white/10');
+                    b.querySelector('span').classList.remove('text-gold-300');
+                    b.querySelector('span').classList.add('text-slate-300');
+                });
+                btn.classList.add('active', 'border-gold-400', 'bg-gold-500/20');
+                btn.querySelector('span').classList.add('text-gold-300');
+                btn.querySelector('span').classList.remove('text-slate-300');
+
+                selectedTier = btn.getAttribute('data-tier');
+                calculateEstimate();
+            });
+        });
+
+        function calculateEstimate() {
+            const guestCount = parseInt(calcGuestSlider.value);
+            calcGuestVal.innerText = `${guestCount} Guests`;
+
+            const eventType = calcEventType.value;
+            const basePrice = (basePrices[eventType] || 3000) * tierMultipliers[selectedTier];
+            const guestCost = guestCount * (selectedTier === 'platinum' ? 30 : selectedTier === 'gold' ? 18 : 12);
+
+            let addonTotal = 0;
+            addonCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    addonTotal += parseFloat(cb.value);
+                }
+            });
+
+            const totalMid = basePrice + guestCost + addonTotal;
+            const minEstimate = Math.round(totalMid * 0.9);
+            const maxEstimate = Math.round(totalMid * 1.15);
+
+            summaryBase.innerText = `$${Math.round(basePrice).toLocaleString()}`;
+            summaryGuest.innerText = `$${Math.round(guestCost).toLocaleString()}`;
+            summaryAddons.innerText = `$${Math.round(addonTotal).toLocaleString()}`;
+            displayTotal.innerText = `$${minEstimate.toLocaleString()} - $${maxEstimate.toLocaleString()}`;
+        }
+
+        calcEventType.addEventListener('change', calculateEstimate);
+        calcGuestSlider.addEventListener('input', calculateEstimate);
+        addonCheckboxes.forEach(cb => cb.addEventListener('change', calculateEstimate));
+
+        // Initial Calculation
+        calculateEstimate();
+
+        function bookEstimatedPackage() {
+            const targetSection = document.getElementById('contact');
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+            
+            const eventSelect = document.getElementById('form-event-type');
+            if (calcEventType.value === 'wedding') eventSelect.value = 'Luxury Wedding & Gala';
+            else if (calcEventType.value === 'corporate') eventSelect.value = 'Corporate Summit / Launch';
+            else if (calcEventType.value === 'party') eventSelect.value = 'Smart Event Tech & Apps';
+            else if (calcEventType.value === 'concert') eventSelect.value = '3D Projection & Lighting';
+
+            document.getElementById('form-guests').value = calcGuestSlider.value;
+        }
+
+        // --- 5. Gallery Lightbox & Filtering ---
+        const galleryBtns = document.querySelectorAll('.gallery-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightboxModal = document.getElementById('lightbox-modal');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        galleryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                galleryBtns.forEach(b => {
+                    b.classList.remove('bg-gold-500', 'text-navy-950');
+                    b.classList.add('bg-navy-900', 'text-slate-300');
+                });
+                btn.classList.remove('bg-navy-900', 'text-slate-300');
+                btn.classList.add('bg-gold-500', 'text-navy-950');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        function openLightbox(imgSrc, caption) {
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = caption;
+            lightboxModal.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            lightboxModal.classList.add('hidden');
+        }
+
+        // --- 6. Form Handlers & Local Storage ---
+        const budgetSlider = document.getElementById('form-budget-slider');
+        const budgetVal = document.getElementById('form-budget-val');
+
+        budgetSlider.addEventListener('input', (e) => {
+            budgetVal.innerText = `$${parseInt(e.target.value).toLocaleString()}`;
+        });
+
+        function prefillBooking(serviceName) {
+            const targetSection = document.getElementById('contact');
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+            
+            const messageArea = document.getElementById('form-message');
+            messageArea.value = `Interested in inquiring about: ${serviceName}. Please provide project scope and consultation info.`;
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const bookingData = {
+                name: document.getElementById('form-name').value,
+                email: document.getElementById('form-email').value,
+                phone: document.getElementById('form-phone').value,
+                date: document.getElementById('form-date').value,
+                eventType: document.getElementById('form-event-type').value,
+                guests: document.getElementById('form-guests').value,
+                budget: budgetSlider.value,
+                message: document.getElementById('form-message').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // Save to local storage for demonstration
+            let existingBookings = JSON.parse(localStorage.getItem('yd_innovation_bookings') || '[]');
+            existingBookings.push(bookingData);
+            localStorage.setItem('yd_innovation_bookings', JSON.stringify(existingBookings));
+
+            // Show Toast Confirmation
+            document.getElementById('toast-modal').classList.remove('hidden');
+            document.getElementById('booking-form').reset();
+        }
+
+        function closeToastModal() {
+            document.getElementById('toast-modal').classList.add('hidden');
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to YD Innovation tech & event updates!');
+            e.target.reset();
+        }
+
+        // --- 7. Accordion FAQ ---
+        const faqBtns = document.querySelectorAll('.faq-btn');
+
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const answer = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+
+                // Toggle visibility
+                answer.classList.toggle('hidden');
+                
+                if (answer.classList.contains('hidden')) {
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
